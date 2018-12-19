@@ -1,0 +1,130 @@
+<html>
+<body>
+    <head>
+            <title>
+                Buy A Pixel
+            </title>
+        <style>
+            body {
+                overflow-x:hidden;
+            }
+            canvas {
+                margin-top:1em;
+                border-width: 1px;
+                border-style: solid;
+                margin-left: auto;
+                margin-right: auto;
+                display: block;
+            }
+            #buyContainer {
+                margin-left:1em;
+                margin-top:1em;
+            }
+            #canvasControls {
+                margin-top:1em;
+                text-align: center;
+            }
+        </style>
+        <link rel="stylesheet" href="bootstrap.min.css">
+        </link>
+    </head>
+
+    <body>
+        <script src="main.js"></script>
+
+        <div class="row">
+            <div id="buyContainer" class="col-3">
+                <h4 id="addressInfo"></h4>
+                <ol>
+                    <li>Log into metamask</li>
+                    <li>Click on a pixel to get it's coordinates.</li>
+                    <li>Select the color you want</li>
+                    <li>Set a price (+1 finney more then current price)</li>
+                    <li>Buy the pixel</li>
+                    <li>Press 'Load Pixels' to see your own pixel</li>
+
+                </ol>
+                <br>
+                <h4>Pixel Info:</h4>
+                <form class="col-lg-8">
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label class="col-form-label" for="xInput">X:</label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input class="form-control" id="xInput" type="number" value=0 min=0 max=511></input>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label for="yInput">Y:</label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input class="form-control" id="yInput" type="number" value=0 min=0 max=511></input>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label for="colorInput">Color:</label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input class="form-control" id="colorInput" type="color" value="#ff00ff"></input>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label class="col-form-label" for="priceInput">Price (ETH):</label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input class="form-control" id="priceInput" type="number" value=0 step="0.001"></input>
+                        </div>
+                    </div>
+
+                    <br>
+                    <button id="buyPixelButton">Buy</button>
+                    <br>
+                </form>
+
+            </div>
+
+            <div id="canvasContainer" class="col-8">
+                <canvas id="canvas" width="512" height="512"></canvas>
+
+                <div id="canvasControls">
+                    <button id="zoomInButton">Zoom In</button>
+                    <button id="zoomOutButton">Zoom Out</button>
+                    <button id="resetButton">Reset</button>
+                </div>
+
+
+            </div>
+        </div>
+        <hr>
+        <div class="row justify-content-center">
+
+            <div id="infoContainer" class="col-10">
+                <button id="getPixelsButton">Load Pixels</button>
+                <h2>Pixel List:</h2>
+                <table id="pixelTable"></table>
+                <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Coordinates (x,y)</th>
+                            <th scope="col">Color</th>
+                            <th scope="col">Owner</th>
+                            <th scope="col">Price(ETH)</th>
+                          </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                        </tbody>
+                      </table>
+            </div>
+        </div>
+
+    </body>
+
+</html>
